@@ -1,0 +1,35 @@
+<!-- lista-usuarios.component.html -->
+
+<div class="p-6">
+    <h2 class="text-2xl font-semibold mb-4">Lista de Usuarios</h2>
+    <button [routerLink]="['/crear-usuario']"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
+        Añadir Usuario
+    </button>
+    <table class="w-full border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="py-2 px-4 border">ID</th>
+                <th class="py-2 px-4 border">Nombre</th>
+                <th class="py-2 px-4 border">Apellidos</th>
+                <th class="py-2 px-4 border">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios" class="hover:bg-gray-100">
+                <td class="py-2 px-4 border">{{ usuario.id }}</td>
+                <td class="py-2 px-4 border">{{ usuario.nombre }}</td>
+                <td class="py-2 px-4 border">{{ usuario.apellidos }}</td>
+                <td class="py-2 px-4 border">
+                    <a [routerLink]="['/actualizar-usuario', usuario.id]"
+                        class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded mr-2">
+                        Editar
+                    </a>
+                    <button (click)="eliminarUsuario(usuario.id)"
+                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
